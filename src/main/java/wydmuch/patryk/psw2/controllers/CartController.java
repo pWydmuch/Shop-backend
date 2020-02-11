@@ -82,18 +82,11 @@ public class CartController {
 
 
 
-    // POST: Submit Cart (Save)
     @GetMapping("cart/rem")
     public String shoppingCartConfirmationSave(HttpServletRequest request) {
         Cart cart = Utils.getCartInSession(request);
 
-//        if (cart.isEmpty()) {
-//
-//            return "redirect:/shoppingCart";
-//        } else if (!cart.isValidCustomer()) {
-//
-//            return "redirect:/shoppingCartCustomer";
-//        }
+
         try {
             orderService.saveOrder(cart);
         } catch (Exception e) {
@@ -105,10 +98,10 @@ finally {
             System.out.println(cart);
             Utils.removeCartInSession(request);
 
-            // Store last cart.
+
             Utils.storeLastOrderedCartInSession(request, cart);
         }
-        // Remove Cart from Session
+
 
         return "good";
     }

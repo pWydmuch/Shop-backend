@@ -12,6 +12,8 @@ import java.util.List;
 @RestController
 public class ProductController {
 
+    //TODO paginacja
+
     final
     ProductRepository productRepository;
 
