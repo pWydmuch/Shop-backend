@@ -1,5 +1,8 @@
 package wydmuch.patryk.psw2.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 import wydmuch.patryk.psw2.entity.Product;
 
 import java.util.ArrayList;
