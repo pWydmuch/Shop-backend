@@ -8,13 +8,13 @@ import wydmuch.patryk.psw2.repositories.ProductRepository;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200","http://487a086c.ngrok.io"}, allowCredentials = "true")
 @RestController
 public class ProductController {
 
     //TODO paginacja
 
-    final
+    private final
     ProductRepository productRepository;
 
     @Autowired
@@ -32,8 +32,4 @@ public class ProductController {
         return productRepository.findByCategory(Category.valueOf(category.toUpperCase()));
     }
 
-//    @GetMapping("products/categories")
-//    List<Product> getAll(){
-//        return productRepository.findByCategory(Category.valueOf(category.toUpperCase()));
-//    }
 }

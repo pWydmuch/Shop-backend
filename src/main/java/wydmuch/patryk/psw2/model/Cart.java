@@ -94,6 +94,10 @@ public class Cart {
         }
     }
 
+    public void removeAllProducts() {
+       cartItems.clear();
+    }
+
     public boolean isEmpty() {
         return this.cartItems.isEmpty();
     }

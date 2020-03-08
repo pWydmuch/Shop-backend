@@ -2,28 +2,25 @@ package wydmuch.patryk.psw2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 import wydmuch.patryk.psw2.entity.Product;
 import wydmuch.patryk.psw2.model.Cart;
 import wydmuch.patryk.psw2.model.CartWrapper;
 import wydmuch.patryk.psw2.repositories.ProductRepository;
 import wydmuch.patryk.psw2.services.OrderService;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:4200", "http://487a086c.ngrok.io"}, allowCredentials = "true")
 
 @RestController
 public class CartController {
 
-    final
+    private final
     ProductRepository productRepository;
 
-    final
+    private final
     OrderService orderService;
 
-    final
+    private final
     CartWrapper cartWrapper;
 
     @Autowired
@@ -35,6 +32,8 @@ public class CartController {
 
     @GetMapping("cart")
     public Cart shoppingCartHandler() {
+
+        System.out.println(cartWrapper.getCart());
         return cartWrapper.getCart();
     }
 
@@ -83,23 +82,26 @@ public class CartController {
     }
 
 
-    @GetMapping("cart/rem")
-    public String shoppingCartConfirmationSave(HttpSession session) {
-
+    @GetMapping("/order")
+    public Cart shoppingCartConfirmationSave() {
         Cart cart = cartWrapper.getCart();
         try {
             orderService.saveOrder(cart);
         } catch (Exception e) {
-
             e.printStackTrace();
-            return "bad";
-        }
-        finally {
-            System.out.println(cart);
-            session.invalidate();
-        }
+        } finally {
+            cart.removeAllProducts();
 
-
-        return "good";
+        }
+        return cart;
     }
+
+    @DeleteMapping("cart")
+    public Cart clearCart() {
+        Cart cart = cartWrapper.getCart();
+        cart.removeAllProducts();
+        return cart;
+    }
+
 }
+
