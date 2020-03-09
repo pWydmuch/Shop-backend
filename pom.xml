@@ -11,8 +11,8 @@
     <groupId>wydmuch.patryk</groupId>
     <artifactId>psw2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>psw2</name>
-    <description>Demo project for Spring Boot</description>
+    <name>shop</name>
+
 
     <properties>
         <java.version>1.8</java.version>

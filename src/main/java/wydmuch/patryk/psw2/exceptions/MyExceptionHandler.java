@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import wydmuch.patryk.psw2.exceptions.MyAuthenticationException;
-import wydmuch.patryk.psw2.exceptions.UserAlreadyExistsException;
+
 
 import java.io.IOException;
 
@@ -17,14 +16,9 @@ import java.io.IOException;
 @ControllerAdvice
 public class MyExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({UserAlreadyExistsException.class,
-//                        UsernameNotFoundException.class
-                            })
-    public ResponseEntity<?> handleUserAlreadyExists(Exception e){
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-    }
 
-    @ExceptionHandler({MyAuthenticationException.class, SignatureException.class})
+
+    @ExceptionHandler({SignatureException.class})
     public ResponseEntity<?> handleAuthentication(Exception e){
         return new ResponseEntity<>(e.getMessage(),HttpStatus.UNAUTHORIZED);
     }

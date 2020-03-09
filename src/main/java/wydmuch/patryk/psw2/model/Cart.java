@@ -138,4 +138,8 @@ public class Cart {
                 ", deliveryId=" + deliveryId +
                 '}';
     }
+
+    public void deleteDelivery() {
+        deliveryId =null;
+    }
 }

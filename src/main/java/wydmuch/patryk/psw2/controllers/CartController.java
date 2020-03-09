@@ -74,10 +74,16 @@ public class CartController {
         return "";
     }
 
-    @PutMapping("cart/{id}")
-    public Cart chooseDel(@PathVariable Long id) {
+    @PutMapping("cart/delivery/{id}")
+    public Cart chooseDelivery(@PathVariable Long id) {
         Cart cart = cartWrapper.getCart();
         cart.setDeliveryId(id);
+        return cart;
+    }
+    @DeleteMapping("cart/delivery")
+    public Cart deleteDelivery() {
+        Cart cart = cartWrapper.getCart();
+        cart.deleteDelivery();
         return cart;
     }
 
