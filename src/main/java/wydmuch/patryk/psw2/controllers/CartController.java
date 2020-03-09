@@ -33,7 +33,7 @@ public class CartController {
     @GetMapping("cart")
     public Cart shoppingCartHandler() {
 
-        System.out.println(cartWrapper.getCart());
+//        System.out.println(cartWrapper.getCart());
         return cartWrapper.getCart();
     }
 
