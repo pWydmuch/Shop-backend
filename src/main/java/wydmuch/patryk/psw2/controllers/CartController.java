@@ -9,7 +9,8 @@ import wydmuch.patryk.psw2.repositories.ProductRepository;
 import wydmuch.patryk.psw2.services.OrderService;
 import javax.servlet.http.HttpSession;
 
-@CrossOrigin(origins = "http://my-shop-123.surge.sh", allowCredentials = "true")
+//@CrossOrigin(origins = "http://my-shop-123.surge.sh", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 public class CartController {
 
